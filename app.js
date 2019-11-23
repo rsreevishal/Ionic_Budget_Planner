@@ -3,6 +3,7 @@ let amount = document.getElementById('inp-amount');
 let addbtn = document.getElementById('btn-add');
 let clrbtn = document.getElementById('btn-clear');
 let list = document.getElementById('list');
+let alertctrl = document.querySelector('ion-alert-controller');
 let tot = 0;
 addbtn.addEventListener('click',()=>{
     if(reason.value.length != 0 && amount.value > 0 )
@@ -13,6 +14,16 @@ addbtn.addEventListener('click',()=>{
         document.getElementById('total').innerHTML = tot;
         list.prepend(ion_item);
         clear();
+    }
+    else
+    {
+        alertctrl.create({
+            message:"Please enter valid inputs!",
+            header:"Invalid inputs",
+            buttons:['Okay']
+        }).then(alertEle =>{
+            alertEle.present();
+        });
     }
 });
 
